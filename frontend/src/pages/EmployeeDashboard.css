@@ -1,0 +1,172 @@
+ 
+
+/* Employee Glass Theme (distinct from Admin) */
+.employee-dashboard.glass-employee {
+  background: linear-gradient(rgba(0, 0, 0, 0.62), rgba(0, 0, 0, 0.7)),
+  url('https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1740&q=80') no-repeat center center fixed;
+  background-size: cover;
+  color: #e5e7eb;
+  min-height: 100vh;
+  position: relative;
+}
+
+/* Keep Dashboard.css layout but make it glass here */
+.glass-employee .dashboard-container { background: transparent !important; position: relative; z-index: 1; }
+.glass-employee .dashboard-header {
+  background: rgba(17, 24, 39, 0.55);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  color: #e5e7eb;
+}
+.glass-employee .dashboard-header h1 { color: #22c55e; text-shadow: 0 2px 6px rgba(0,0,0,0.35); }
+.glass-employee .logout-btn {
+  background: rgba(255,255,255,0.08);
+  color: #e5e7eb;
+  border: 1px solid rgba(255,255,255,0.15);
+}
+.glass-employee .logout-btn:hover { background: rgba(255,255,255,0.15); }
+
+.glass-employee .dashboard-main { color: #e5e7eb; }
+
+/* Small red logout button on header right */
+.glass-employee .dashboard-header { display: flex !important; justify-content: space-between !important; align-items: center !important; gap: 12px; }
+.glass-employee .dashboard-header .logout-btn {
+  background: linear-gradient(90deg, #ef4444, #f43f5e) !important;
+  color: #ffffff !important;
+  border: 1px solid rgba(239, 68, 68, 0.5) !important;
+  padding: 4px 10px !important;
+  font-size: 12px !important;
+  border-radius: 6px !important;
+  height: 28px !important;
+  line-height: 1 !important;
+  display: inline-flex !important;
+  align-items: center; justify-content: center;
+  width: auto !important; min-width: unset !important; max-width: max-content !important;
+  flex: 0 0 auto !important; margin-left: auto !important;
+  position: static !important; white-space: nowrap;
+}
+.glass-employee .dashboard-header .logout-btn:hover {
+  filter: brightness(1.05);
+}
+
+/* Removed unused sidebar/layout rules (emp-layout, emp-sidebar, emp-logo, emp-logout, content) */
+
+/* Cards */
+.glass-employee .dashboard-card {
+  background: rgba(17, 24, 39, 0.6) !important; /* slate-900 */
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-radius: 14px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.35);
+  color: #e5e7eb;
+}
+.glass-employee .dashboard-card h2 {
+  color: #7dd3fc; /* light sky */
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+/* Convert stats cards to glass style */
+.glass-employee .stats-card {
+  background: rgba(17, 24, 39, 0.6) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  color: #e5e7eb !important;
+}
+.glass-employee .stats-card::before { display: none !important; }
+.glass-employee .stats-card h3 { color: #a7f3d0; }
+.glass-employee .stat-number { color: #f3f4f6; }
+.glass-employee .stats-card .attendance-time { color: #cbd5e1; }
+
+/* Map embed inside stats cards */
+.glass-employee .map-wrapper {
+  width: 100%;
+  height: 200px;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+  background: rgba(17, 24, 39, 0.4);
+}
+.glass-employee .map-embed {
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+/* Buttons */
+.glass-employee .btn,
+.glass-employee .btn-primary {
+  background: linear-gradient(90deg, #22c55e, #3b82f6) !important; /* green -> blue */
+  color: #ffffff !important;
+  border: 1px solid rgba(255,255,255,0.15) !important;
+}
+.glass-employee .btn-danger { background: linear-gradient(90deg, #ef4444, #f43f5e) !important; color: #ffffff !important; }
+.glass-employee .btn:hover { filter: brightness(1.05); }
+
+/* Forms */
+.glass-employee .form-group label, .glass-employee label { color: #cfe1ff; font-weight: 500; }
+.glass-employee .form-group input,
+.glass-employee .form-group select,
+.glass-employee .form-group textarea,
+.glass-employee .form-select,
+.glass-employee input[type="text"],
+.glass-employee input[type="number"],
+.glass-employee textarea,
+.glass-employee select {
+  background: rgba(255,255,255,0.06) !important;
+  border: 1px solid rgba(255,255,255,0.18) !important;
+  color: #e5e7eb !important;
+  border-radius: 10px;
+  box-shadow: inset 0 1px 2px rgba(0,0,0,0.3);
+  caret-color: #7dd3fc;
+}
+.glass-employee .form-group input::placeholder,
+.glass-employee .form-group textarea::placeholder,
+.glass-employee input::placeholder,
+.glass-employee textarea::placeholder { color: #cbd5e1; opacity: 0.8; }
+.glass-employee .form-group input:focus,
+.glass-employee .form-group select:focus,
+.glass-employee .form-group textarea:focus,
+.glass-employee select:focus,
+.glass-employee input:focus { outline: none; border-color: #22c55e !important; box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.18); }
+.glass-employee select option { color: #e5e7eb; background: #0b1220; }
+
+/* Tables */
+.glass-employee .table-container { background: rgba(17,24,39,0.55); border-radius: 12px; box-shadow: 0 8px 25px rgba(0,0,0,0.3); }
+.glass-employee .data-table { background: transparent; color: #e5e7eb; }
+.glass-employee .data-table th { background: rgba(17,24,39,0.85); color: #e5e7eb; border-bottom: 1px solid rgba(255,255,255,0.08); }
+.glass-employee .data-table td { border-bottom: 1px solid rgba(255,255,255,0.08); color: #e5e7eb; }
+.glass-employee .data-table tr:hover { background: rgba(125, 211, 252, 0.06); }
+
+/* Status badges */
+.glass-employee .status-badge { color: #ffffff; }
+.glass-employee .status-check-in { background: rgba(34,197,94,0.25); color: #bbf7d0; border: 1px solid rgba(34,197,94,0.5); }
+.glass-employee .status-check-out { background: rgba(239,68,68,0.25); color: #fecaca; border: 1px solid rgba(239,68,68,0.5); }
+
+/* Announcement cards */
+.glass-employee .announcement-card { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.15); color: #e5e7eb; }
+.glass-employee .announcement-header h3 { color: #e5e7eb; }
+.glass-employee .announcement-message { color: #d1d5db; }
+.glass-employee .announcement-footer { color: #cbd5e1; }
+.glass-employee .priority-high { background: linear-gradient(90deg, #ef4444, #f43f5e) !important; color: #ffffff !important; border: 1px solid rgba(239,68,68,0.5) !important; }
+.glass-employee .priority-medium { background: linear-gradient(90deg, #10b981, #22c55e) !important; color: #ffffff !important; border: 1px solid rgba(34,197,94,0.5) !important; }
+.glass-employee .priority-low { background: linear-gradient(90deg, #3b82f6, #60a5fa) !important; color: #ffffff !important; border: 1px solid rgba(96,165,250,0.5) !important; }
+
+/* Attendance list */
+.glass-employee .attendance-item { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); }
+.glass-employee .attendance-item:hover { background: rgba(255,255,255,0.1); }
+
+/* Particles */
+.glass-employee .particles { position: fixed; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; overflow: hidden; }
+.glass-employee .particle { position: absolute; border-radius: 50%; background: rgba(125, 211, 252, 0.15); animation: employee-float 18s infinite linear; }
+.glass-employee .particles .particle:nth-child(1) { width: 18px; height: 18px; top: 25%; left: 10%; animation-duration: 18s; }
+.glass-employee .particles .particle:nth-child(2) { width: 12px; height: 12px; top: 65%; left: 15%; animation-duration: 14s; background: rgba(34,197,94,0.2); }
+.glass-employee .particles .particle:nth-child(3) { width: 24px; height: 24px; top: 35%; left: 80%; animation-duration: 22s; }
+.glass-employee .particles .particle:nth-child(4) { width: 10px; height: 10px; top: 75%; left: 70%; animation-duration: 12s; background: rgba(34,197,94,0.18); }
+.glass-employee .particles .particle:nth-child(5) { width: 16px; height: 16px; top: 55%; left: 50%; animation-duration: 16s; }
+@keyframes employee-float { 0% { transform: translateY(0) translateX(0) rotate(0deg); opacity: 0.5; } 100% { transform: translateY(-100vh) translateX(100vw) rotate(360deg); opacity: 0; } }
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+  .glass-employee .dashboard-header { padding: 15px 16px; }
+  .glass-employee .dashboard-main { padding: 20px 16px; }
+  .glass-employee .map-wrapper { height: 220px; }
+}

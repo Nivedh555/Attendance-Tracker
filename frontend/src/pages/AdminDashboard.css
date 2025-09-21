@@ -1,0 +1,728 @@
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
+
+:root {
+    --primary: #4361ee;
+    --secondary: #3f37c9;
+    --success: #4cc9f0;
+    --info: #4895ef;
+    --warning: #f72585;
+    --light: #f8f9fa;
+    --dark: #212529;
+    --gray: #6c757d;
+    --sidebar-width: 250px;
+    --header-height: 70px;
+    --card-border-radius: 12px;
+    --transition: all 0.3s ease;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.admin-dashboard {
+    background-color: #f5f7fb;
+    color: var(--dark);
+    display: flex;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* Sidebar Styles */
+.sidebar {
+    width: var(--sidebar-width);
+    background: linear-gradient(to bottom, #3a7bd5, #00d2ff);
+    color: white;
+    height: 100vh;
+    position: fixed;
+    transition: var(--transition);
+    z-index: 100;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+.logout-btn {
+    position: absolute;
+    bottom: 2rem;
+    left: 1rem;
+    right: 1rem;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    border: none;
+    padding: 0.8rem 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logout-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.logout-btn i {
+    margin-right: 0.5rem;
+}
+
+
+.btn {
+    background: var(--primary);
+    color: white;
+    border: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: var(--transition);
+    font-size: 0.9rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.btn:hover {
+    background: var(--secondary);
+    transform: translateY(-1px);
+}
+
+.btn-danger {
+    background: var(--warning);
+}
+
+.btn-danger:hover {
+    background: #e91e63;
+}
+
+.btn-success {
+    background: var(--success);
+}
+
+.btn-success:hover {
+    background: #00bcd4;
+}
+
+/* Tables */
+.table-container {
+    overflow-x: auto;
+}
+
+/* Forms */
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: var(--dark);
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    transition: var(--transition);
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 2px rgba(67, 97, 238, 0.1);
+}
+
+
+/* Error and Success Messages */
+.error-message {
+    background: #ffebee;
+    color: #c62828;
+    padding: 1rem;
+    border-radius: 6px;
+    margin-bottom: 1rem;
+    border-left: 4px solid #f44336;
+}
+
+.success-message {
+    background: #e8f5e8;
+    color: #2e7d32;
+    padding: 1rem;
+    border-radius: 6px;
+    margin-bottom: 1rem;
+    border-left: 4px solid #4caf50;
+}
+
+
+/* === User's Structure Additions === */
+/* Logo section in sidebar */
+.logo {
+  text-align: center;
+  padding: 20px 0;
+  font-size: 24px;
+  font-weight: 800;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  margin-bottom: 20px;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  opacity: 1 !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+  mix-blend-mode: normal !important;
+  filter: none !important;
+  background: none !important;
+  -webkit-background-clip: initial !important;
+  background-clip: border-box !important;
+}
+
+.sidebar .logo i,
+.sidebar .logo span,
+.logo i,
+.logo span {
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  opacity: 1 !important;
+  background: none !important;
+  -webkit-background-clip: initial !important;
+  background-clip: border-box !important;
+}
+
+.logo svg,
+.logo svg path {
+  fill: #ffffff !important;
+  stroke: #ffffff !important;
+}
+
+/* Sidebar menu per user's structure */
+.menu {
+  list-style: none;
+  padding: 0 15px;
+}
+
+.menu li {
+  margin-bottom: 10px;
+  padding: 12px 15px;
+  border-radius: 8px;
+  transition: all 0.3s;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.menu i {
+  margin-right: 10px;
+  width: 20px;
+  text-align: center;
+}
+
+/* Content wrapper alias (same spacing as main-content) */
+.content {
+  flex: 1;
+  margin-left: var(--sidebar-width);
+  padding: 30px;
+}
+
+/* Header per user's structure (glass theme overrides below) */
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.user-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #3a7bd5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: bold;
+}
+
+/* Tabs: base light styles removed in favor of glass-theme */
+
+/* Stats: base light styles removed in favor of glass-theme */
+
+/* Legend: base light styles removed in favor of glass-theme */
+
+/* Responsive additions to match user's behavior */
+@media (max-width: 992px) {
+  .sidebar { width: 80px; }
+  .sidebar .logo span, .sidebar .menu li span { display: none; }
+  .sidebar .menu i { margin-right: 0; font-size: 20px; }
+  .content { margin-left: 80px; }
+}
+
+@media (max-width: 768px) {
+  .glass-theme .stats { grid-template-columns: 1fr; }
+  .glass-theme .tabs { flex-wrap: wrap; }
+  .glass-theme .tab { flex: 1 0 50%; }
+}
+
+@media (max-width: 576px) {
+  .sidebar { width: 0; overflow: hidden; }
+  .content { margin-left: 0; padding: 15px; }
+  .glass-theme .tab { flex: 1 0 100%; }
+}
+
+/* ============================= */
+/* Glass Theme (scoped overrides) */
+/* ============================= */
+.admin-dashboard.glass-theme {
+  /* Background overlay with image, scoped to dashboard only */
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+              url('https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1740&q=80') no-repeat center center fixed;
+  background-size: cover;
+  color: #fff;
+}
+
+.glass-theme .sidebar {
+  background: rgba(25, 25, 35, 0.8) !important;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+}
+
+.glass-theme .logo i {
+  color: #4cc9f0 !important;
+}
+
+.glass-theme .menu i {
+  color: #4cc9f0;
+}
+
+.glass-theme .menu li:hover {
+  background: linear-gradient(45deg, rgba(76, 201, 240, 0.2), rgba(77, 182, 172, 0.2));
+}
+
+.glass-theme .menu li.active {
+  background: linear-gradient(45deg, rgba(76, 201, 240, 0.3), rgba(77, 182, 172, 0.3));
+  font-weight: bold;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.glass-theme .content {
+  position: relative;
+  z-index: 1;
+}
+
+.glass-theme .header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  padding: 15px 25px;
+  background: rgba(25, 25, 35, 0.7);
+  border-radius: 15px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+}
+
+.glass-theme .header h1 {
+  color: #4cc9f0;
+  font-weight: 600;
+  font-size: 28px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.glass-theme .user-info {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  background: rgba(76, 201, 240, 0.2);
+  padding: 8px 15px;
+  border-radius: 12px;
+}
+
+.glass-theme .user-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(45deg, #4cc9f0, #4895ef);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: bold;
+  box-shadow: 0 0 10px rgba(76, 201, 240, 0.5);
+}
+
+.glass-theme .tabs {
+  display: flex;
+  background: rgba(25, 25, 35, 0.7);
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+  margin-bottom: 30px;
+  backdrop-filter: blur(10px);
+}
+
+.glass-theme .tab {
+  padding: 18px 20px;
+  flex: 1;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-weight: 500;
+  position: relative;
+  overflow: hidden;
+}
+
+.glass-theme .tab::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 4px;
+  background: linear-gradient(45deg, #4cc9f0, #4895ef);
+  transition: all 0.3s;
+  border-radius: 4px 4px 0 0;
+}
+
+.glass-theme .tab.active {
+  background: rgba(76, 201, 240, 0.15);
+}
+
+.glass-theme .tab.active::before {
+  width: 70%;
+}
+
+.glass-theme .tab:hover:not(.active) {
+  background: rgba(76, 201, 240, 0.1);
+}
+
+.glass-theme .stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+  margin-bottom: 30px;
+}
+
+.glass-theme .stat-card {
+  background: rgba(25, 25, 35, 0.7);
+  border-radius: 15px;
+  padding: 25px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.glass-theme .stat-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+}
+
+.glass-theme .stat-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.glass-theme .stat-title {
+  color: #a0a0b0;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.glass-theme .stat-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 20px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.glass-theme .users-icon { background: linear-gradient(45deg, #4cc9f0, #4895ef); }
+.glass-theme .admins-icon { background: linear-gradient(45deg, #f72585, #b5179e); }
+.glass-theme .employees-icon { background: linear-gradient(45deg, #4cc9f0, #560bad); }
+.glass-theme .geofences-icon { background: linear-gradient(45deg, #f9c74f, #f9844a); }
+
+.glass-theme .stat-value {
+  font-size: 32px;
+  font-weight: bold;
+  color: #fff;
+  margin-bottom: 10px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.glass-theme .stat-change {
+  font-size: 13px;
+  color: #4cc9f0;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.glass-theme .legend {
+  background: rgba(25, 25, 35, 0.7);
+  border-radius: 15px;
+  padding: 25px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.glass-theme .legend h2 {
+  margin-bottom: 20px;
+  color: #4cc9f0;
+  font-size: 20px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.glass-theme .legend-items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.glass-theme .legend-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 8px 15px;
+  border-radius: 10px;
+}
+
+.glass-theme .color-box {
+  width: 18px;
+  height: 18px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.glass-theme .legend-label {
+  font-size: 14px;
+  color: #e0e0e0;
+}
+
+/* Forms - Glass Theme Overrides (Geofence/Announcement) */
+.glass-theme .form-group label {
+  color: #a8c5ff !important; /* readable on dark glass */
+}
+
+/* Make sure all labels inside the glass theme forms are readable */
+.glass-theme label,
+.glass-theme .form label,
+.glass-theme .dashboard-card label {
+  color: #cfe1ff !important;
+  font-weight: 500;
+}
+
+.glass-theme .form-group input,
+.glass-theme .form-group select,
+.glass-theme .form-group textarea,
+.glass-theme .form-select,
+.glass-theme input[type="text"],
+.glass-theme input[type="number"],
+.glass-theme textarea,
+.glass-theme select {
+  background: rgba(255, 255, 255, 0.06) !important;
+  border: 1px solid rgba(255, 255, 255, 0.18) !important;
+  color: #e5e7eb !important;
+  border-radius: 10px;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.3);
+  caret-color: #93c5fd;
+}
+
+/* Improve dropdown readability */
+.glass-theme select option {
+  color: #e5e7eb;
+  background: #111827;
+}
+
+.glass-theme .form-group input::placeholder,
+.glass-theme .form-group textarea::placeholder,
+.glass-theme input::placeholder,
+.glass-theme textarea::placeholder {
+  color: #cbd5e1;
+  opacity: 0.8;
+}
+
+.glass-theme .form-group input:focus,
+.glass-theme .form-group select:focus,
+.glass-theme .form-group textarea:focus,
+.glass-theme input:focus,
+.glass-theme textarea:focus,
+.glass-theme select:focus {
+  outline: none;
+  border-color: #4cc9f0 !important;
+  box-shadow: 0 0 0 3px rgba(76, 201, 240, 0.15);
+}
+
+/* fix autofill bright background on dark theme */
+.glass-theme input:-webkit-autofill,
+.glass-theme textarea:-webkit-autofill,
+.glass-theme select:-webkit-autofill {
+  -webkit-text-fill-color: #e5e7eb !important;
+  transition: background-color 5000s ease-in-out 0s;
+  box-shadow: 0 0 0px 1000px rgba(255, 255, 255, 0.06) inset;
+}
+
+/* Background particles */
+.glass-theme .particles {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+/* Geofence list items on dark glass */
+.glass-theme .geofence-item {
+  background: rgba(255, 255, 255, 0.06) !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  color: #e5e7eb !important;
+}
+.glass-theme .geofence-info h4 { color: #f3f4f6 !important; }
+.glass-theme .geofence-info p { color: #cbd5e1 !important; }
+
+/* Announcement cards on dark glass */
+.glass-theme .announcement-card {
+  background: rgba(255, 255, 255, 0.06) !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  color: #e5e7eb !important;
+}
+.glass-theme .announcement-header h3 { color: #e5e7eb !important; }
+.glass-theme .announcement-message { color: #d1d5db !important; }
+.glass-theme .announcement-footer { color: #cbd5e1 !important; }
+
+/* Badges on dark glass */
+.glass-theme .priority-badge,
+.glass-theme .role-badge,
+.glass-theme .status-badge {
+  color: #ffffff !important;
+}
+
+/* High-contrast status badge backgrounds for attendance logs */
+.glass-theme .status-check-in {
+  background: rgba(16, 185, 129, 0.25) !important; /* emerald */
+  color: #bbf7d0 !important;
+  border: 1px solid rgba(16, 185, 129, 0.5) !important;
+}
+.glass-theme .status-check-out {
+  background: rgba(239, 68, 68, 0.25) !important; /* red */
+  color: #fecaca !important;
+  border: 1px solid rgba(239, 68, 68, 0.5) !important;
+}
+
+/* Announcement priority badges on dark glass */
+.glass-theme .priority-badge.priority-high,
+.glass-theme .priority-high {
+  background: linear-gradient(90deg, #ef4444, #f43f5e) !important;
+  color: #ffffff !important;
+  border: 1px solid rgba(239, 68, 68, 0.5) !important;
+}
+.glass-theme .priority-badge.priority-medium,
+.glass-theme .priority-medium {
+  /* Fix: make MEDIUM readable on dark glass */
+  background: linear-gradient(90deg, #d97706, #f59e0b) !important;
+  color: #ffffff !important;
+  border: 1px solid rgba(245, 158, 11, 0.5) !important;
+}
+.glass-theme .priority-badge.priority-low,
+.glass-theme .priority-low {
+  background: linear-gradient(90deg, #10b981, #22c55e) !important;
+  color: #ffffff !important;
+  border: 1px solid rgba(16, 185, 129, 0.5) !important;
+}
+
+/* Buttons on dark glass */
+.glass-theme .btn,
+.glass-theme .btn-primary {
+  background: linear-gradient(90deg, #4cc9f0, #4895ef) !important;
+  color: #ffffff !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+}
+.glass-theme .btn-danger { background: linear-gradient(90deg, #f72585, #b5179e) !important; color: #ffffff !important; }
+.glass-theme .btn:hover,
+.glass-theme .btn-primary:hover {
+  filter: brightness(1.05);
+}
+
+.glass-theme .particle {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(76, 201, 240, 0.15);
+  animation: float 15s infinite linear;
+}
+
+@keyframes float {
+  0% { transform: translateY(0) translateX(0) rotate(0deg); opacity: 0.5; }
+  100% { transform: translateY(-100vh) translateX(100vw) rotate(360deg); opacity: 0; }
+}
+
+/* Predefined particle instances for simple use */
+.glass-theme .particles .particle:nth-child(1) { width: 20px; height: 20px; top: 20%; left: 10%; animation-duration: 20s; }
+.glass-theme .particles .particle:nth-child(2) { width: 15px; height: 15px; top: 60%; left: 5%; animation-duration: 15s; }
+.glass-theme .particles .particle:nth-child(3) { width: 25px; height: 25px; top: 30%; left: 80%; animation-duration: 25s; }
+.glass-theme .particles .particle:nth-child(4) { width: 10px; height: 10px; top: 70%; left: 75%; animation-duration: 12s; }
+.glass-theme .particles .particle:nth-child(5) { width: 18px; height: 18px; top: 50%; left: 50%; animation-duration: 18s; }
+
+/* Overrides to neutralize default light dashboard styles when glass theme is active */
+.glass-theme .dashboard-container { background: transparent !important; }
+.glass-theme .dashboard-container::before { display: none !important; }
+.glass-theme .dashboard-main { background: transparent !important; }
+.glass-theme .dashboard-nav { background: transparent !important; box-shadow: none !important; padding: 0; }
+.glass-theme .dashboard-card {
+  background: rgba(25, 25, 35, 0.7) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-radius: 15px !important;
+  color: #e5e7eb;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+}
+.glass-theme .dashboard-card h2 {
+  color: #4cc9f0 !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+.glass-theme .table-container {
+  background: rgba(25, 25, 35, 0.6);
+  border-radius: 12px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+}
+.glass-theme .data-table { background: transparent; color: #e5e7eb; }
+.glass-theme .data-table th {
+  background: rgba(25, 25, 35, 0.85);
+  color: #e5e7eb;
+}
+.glass-theme .data-table td {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  color: #e5e7eb !important;
+}
+.glass-theme .data-table a { color: #93c5fd; }
+.glass-theme .data-table tr:hover { background: rgba(76, 201, 240, 0.05); }
+.glass-theme .role-badge { color: #ffffff; }
+.glass-theme .error-message { background: rgba(239, 68, 68, 0.15); color: #fecaca; border-left-color: #ef4444; }
+.glass-theme .success-message { background: rgba(16, 185, 129, 0.15); color: #bbf7d0; border-left-color: #10b981; }

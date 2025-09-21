@@ -1,0 +1,200 @@
+.animated-btn {
+  position: relative;
+  border: none;
+  border-radius: 12px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.2) 50%, transparent 70%);
+  background-size: 200% 100%;
+  animation: shimmer 3s infinite;
+}
+
+.animated-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.animated-btn:active {
+  transform: translateY(0);
+  transition: transform 0.1s ease;
+}
+
+/* Button Variants */
+.animated-btn-primary {
+  background: #1f2937;
+  color: white;
+}
+
+.animated-btn-primary:hover {
+  background: #374151;
+}
+
+.animated-btn-secondary {
+  background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+  color: #4a5568;
+  border: 2px solid #e2e8f0;
+}
+
+.animated-btn-secondary:hover {
+  background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+  border-color: #cbd5e0;
+}
+
+.animated-btn-danger {
+  background: linear-gradient(135deg, #fc8181 0%, #f56565 100%);
+  color: white;
+}
+
+.animated-btn-danger:hover {
+  background: linear-gradient(135deg, #f56565 0%, #e53e3e 100%);
+}
+
+.animated-btn-success {
+  background: linear-gradient(135deg, #68d391 0%, #48bb78 100%);
+  color: white;
+}
+
+.animated-btn-success:hover {
+  background: linear-gradient(135deg, #48bb78 0%, #38a169 100%);
+}
+
+/* Button Sizes */
+.animated-btn-small {
+  padding: 8px 16px;
+  font-size: 0.875rem;
+  border-radius: 8px;
+}
+
+.animated-btn-medium {
+  padding: 12px 24px;
+  font-size: 1rem;
+}
+
+.animated-btn-large {
+  padding: 16px 32px;
+  font-size: 1.125rem;
+  border-radius: 16px;
+}
+
+/* Button Content */
+.btn-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-icon {
+  font-size: 1.2em;
+  animation: iconBounce 2s ease-in-out infinite;
+}
+
+.btn-text {
+  transition: transform 0.3s ease;
+}
+
+.animated-btn:hover .btn-text {
+  transform: scale(1.05);
+}
+
+/* Loading State */
+.animated-btn.loading {
+  pointer-events: none;
+}
+
+.btn-spinner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 20px;
+  height: 20px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top: 2px solid white;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  z-index: 3;
+}
+
+.animated-btn.loading .btn-content {
+  opacity: 0.3;
+}
+
+/* Disabled State */
+.animated-btn.disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Ripple Effect */
+.btn-ripple {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.4);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s ease, height 0.6s ease;
+  pointer-events: none;
+}
+
+.animated-btn:active .btn-ripple {
+  width: 300px;
+  height: 300px;
+}
+
+/* Animations */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes iconBounce {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+
+@keyframes spin {
+  0% { transform: translate(-50%, -50%) rotate(0deg); }
+  100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+/* Pulse Animation for Important Buttons */
+.animated-btn-primary.pulse {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 4px 15px rgba(31, 41, 55, 0.4); }
+  50% { box-shadow: 0 8px 25px rgba(31, 41, 55, 0.6); }
+  100% { box-shadow: 0 4px 15px rgba(31, 41, 55, 0.4); }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .animated-btn-large {
+    padding: 14px 28px;
+    font-size: 1rem;
+  }
+  
+  .animated-btn-medium {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+  }
+  
+  .animated-btn-small {
+    padding: 6px 12px;
+    font-size: 0.8rem;
+  }
+}
