@@ -396,7 +396,9 @@ const AdminDashboard: React.FC = () => {
       <div className="content">
         <div className="dashboard-container">
       <div className="header">
-        <h1>Admin Dashboard</h1>
+        <div className="header-left">
+          <h1>Admin Dashboard</h1>
+        </div>
         <div className="user-info">
           <div className="user-avatar">{(user?.name?.[0] || 'A').toUpperCase()}</div>
           <div>{user?.name || 'Admin User'}</div>

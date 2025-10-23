@@ -3,6 +3,7 @@ import { useAuth } from '../context/AuthContext';
 import api from '../utils/api';
 import './Dashboard.css';
 import './EmployeeDashboard.css';
+import NotificationToast from '../components/NotificationToast';
 
 interface Geofence {
   _id: string;
@@ -181,6 +182,10 @@ const EmployeeDashboard: React.FC = () => {
   // Find nearest geofence within range
   const findNearestGeofenceInRange = useCallback((): { geofence: Geofence; distance: number } | null => {
     if (!currentLocation || geofences.length === 0) return null;
+    // If GPS accuracy is very poor (>100m), avoid declaring in-range to prevent false positives
+    if (currentLocation.accuracy !== undefined && currentLocation.accuracy > 100) {
+      return null;
+    }
 
     let nearest: { geofence: Geofence; distance: number } | null = null;
     for (const g of geofences) {
@@ -191,7 +196,8 @@ const EmployeeDashboard: React.FC = () => {
         g.center.longitude
       );
       const baseRadius = Number(g.radius) || 0;
-      const accuracyBuffer = currentLocation.accuracy ?? 30;
+      // Cap accuracy buffer to a small value to avoid inflating the geofence excessively
+      const accuracyBuffer = Math.min(currentLocation.accuracy ?? 0, 25);
       const effectiveRadius = baseRadius + accuracyBuffer;
       if (distance <= effectiveRadius) {
         if (!nearest || distance < nearest.distance) {
@@ -358,6 +364,8 @@ const EmployeeDashboard: React.FC = () => {
 
   const isWithinGeofence = (geofence: Geofence) => {
     if (!currentLocation) return false;
+    // If GPS accuracy is very poor (>100m), treat as not reliably in-range
+    if (currentLocation.accuracy !== undefined && currentLocation.accuracy > 100) return false;
     
     const distance = calculateDistance(
       currentLocation.latitude,
@@ -366,8 +374,8 @@ const EmployeeDashboard: React.FC = () => {
       geofence.center.longitude
     );
     const baseRadius = Number(geofence.radius) || 0;
-    // Expand effective radius by current GPS accuracy (meters) to mitigate false negatives
-    const accuracyBuffer = currentLocation.accuracy ?? 30; // default 30m buffer if accuracy unknown
+    // Only apply a small cap to mitigate tiny GPS jitter; avoid large inflation
+    const accuracyBuffer = Math.min(currentLocation.accuracy ?? 0, 25);
     const effectiveRadius = baseRadius + accuracyBuffer;
     return distance <= effectiveRadius;
   };
@@ -427,18 +435,34 @@ const EmployeeDashboard: React.FC = () => {
         <div className="particle"></div>
         <div className="particle"></div>
         <div className="particle"></div>
-        <div className="particle"></div>
-        <div className="particle"></div>
       </div>
       <div className="dashboard-container">
         <div className="dashboard-header">
-          <h1>{user?.name || 'Employee'}</h1>
-          <button onClick={logout} className="logout-btn">Logout</button>
+          <div className="header-left">
+            <h1>{user?.name || 'Employee'}</h1>
+          </div>
+          <button onClick={logout} className="logout-btn">
+            Logout
+          </button>
         </div>
 
       <main className="dashboard-main">
-        {error && <div className="error-message">{error}</div>}
-        {success && <div className="success-message">{success}</div>}
+        <div className="toast-container">
+          {success && (
+            <NotificationToast
+              message={success}
+              type="success"
+              onClose={() => setSuccess('')}
+            />
+          )}
+          {error && (
+            <NotificationToast
+              message={error}
+              type="error"
+              onClose={() => setError('')}
+            />
+          )}
+        </div>
 
         {/* Quick Stats Row (structure only, uses existing styles) */}
         <div className="dashboard-grid">

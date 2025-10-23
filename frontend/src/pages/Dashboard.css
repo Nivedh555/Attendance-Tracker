@@ -24,16 +24,31 @@
 
 /* Header */
 .dashboard-header {
-  background: #ffffff;
-  border-bottom: 1px solid #e2e8f0;
-  padding: 20px 32px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  padding: 1rem 2rem;
+  background: white;
+  border-bottom: 1px solid #e0e0e0;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.university-logo {
+  height: 40px;
+  width: auto;
+  object-fit: contain;
+}
+
+.header-logo {
+  height: 40px;
+  width: auto;
+  object-fit: contain;
 }
 
 .dashboard-header h1 {

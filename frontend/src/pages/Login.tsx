@@ -188,11 +188,7 @@ const Login: React.FC = () => {
             <span></span>
           </div>
 
-          <div className="social-login">
-            <button className="social-btn" onClick={() => handleSocialLogin('Google')}>G</button>
-            <button className="social-btn" onClick={() => handleSocialLogin('Facebook')}>f</button>
-            <button className="social-btn" onClick={() => handleSocialLogin('Microsoft')}>⊞</button>
-          </div>
+          
         </div>
       </div>
     </div>

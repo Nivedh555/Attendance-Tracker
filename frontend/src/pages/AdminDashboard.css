@@ -290,8 +290,9 @@
 .admin-dashboard.glass-theme {
   /* Background overlay with image, scoped to dashboard only */
   background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
-              url('https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1740&q=80') no-repeat center center fixed;
+              url('https://webfiles.amrita.edu/2019/06/8cpBy7xk-Banner-1384-chennai.jpg') no-repeat center center fixed;
   background-size: cover;
+  min-height: 100vh;
   color: #fff;
 }
 
